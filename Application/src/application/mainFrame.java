@@ -5,6 +5,8 @@
  */
 package application;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author ocd5012
@@ -12,7 +14,9 @@ package application;
 public class mainFrame {
     public static void main(String [] args)
 	{
-		//test
+	JFrame j1 = new JFrame("ClassRoom Defense");
+        j1.setVisible(true);
+        j1.setSize(1080,640);
 	}
 
 }
