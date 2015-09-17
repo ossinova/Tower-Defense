@@ -7,7 +7,7 @@ package application;
 
 /**
  *
- * @author asl5257
+ * @author ocd5012
  */
 public class Application {
 
@@ -15,7 +15,7 @@ public class Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Test
+        // TODO code application logic here
     }
     
 }
