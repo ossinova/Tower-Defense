@@ -21,6 +21,8 @@ public class MenuController extends JFrame
     public MenuController()
     {
         setup();
+        GameScreen gs = new GameScreen();
+        add(gs);
     }
     
     public void setup()
