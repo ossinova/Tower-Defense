@@ -5,10 +5,15 @@
  */
 package application;
 
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 /**
  *
  * @author OssiNova
@@ -24,14 +29,12 @@ public class GameScreen extends JFrame {
     JButton btnHard = new JButton("Hard");
     JButton btnPause = new JButton("Pause");
     JButton btnNewWave = new JButton("New Wave");
+    private boolean isInMenu = true;
+    private Image menuImage = null;
+    private Thread runThread;
     
     public GameScreen() {
-        // Game Start button setbounds
-        btnGameStart.setBounds(60, 400, 220, 30);
-
-        // JPanel bounds
-        pnlButton.setBounds(800, 800, 200, 100);
-
+      
         // Adding to JFrame
         pnlButton.add(btnGameStart);
         pnlButton.add(btnEasy);
@@ -42,17 +45,49 @@ public class GameScreen extends JFrame {
         add(pnlButton);
 
         // JFrame properties
-        setSize(400, 400);
+        setSize(1200, 800);
         setBackground(Color.BLACK);
         setTitle("Classroom Defense");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-
+    public void paint(Graphics g) { 
+     
+        
+        if (isInMenu)
+        { 
+            //draw menu
+            DrawMenu(g);
+        
+        }
+      else
+          {
+              //draw everything else
+          }
+    }
+           
+    public void DrawMenu(Graphics g){
+        if (this.menuImage == null) 
+            {
+      
+        try {
+            URL imagePath = this.getClass().getResource("MainMenu.png");
+            this.menuImage = Toolkit.getDefaultToolkit().getImage(imagePath);
+        }
+        catch (Exception e) {
+            //image does not exist
+            e.printStackTrace();
+        }
+         }
+        g.drawImage(menuImage, 0, 0, 1200, 800, this);
+    }
+        
     public static void main(String[] args) {
+       
         new GameScreen();
+        
     }
 }
-    
+     
 
