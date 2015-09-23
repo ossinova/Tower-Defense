@@ -5,18 +5,25 @@
  */
 package application;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
  * @author ocd5012
  */
-public class MenuUI extends JPanel{
+public class MenuUI extends JPanel implements ActionListener{
    
     private Image menuImage = null;
     private boolean isInMenu = true;
@@ -27,18 +34,26 @@ public class MenuUI extends JPanel{
     JButton btnEasy = new JButton("Easy");
     JButton btnMedium = new JButton("Medium");
     JButton btnHard = new JButton("Hard");
-    JButton btnPause = new JButton("Pause");
-    JButton btnNewWave = new JButton("New Wave");
-    
+    JTextArea nameID = new JTextArea("Your Name");
+    String userNameID;
   public MenuUI() {
-   pnlButton.add(btnGameStart);
-   pnlButton.add(btnEasy);
-   pnlButton.add(btnMedium);
-   pnlButton.add(btnHard);
-   pnlButton.add(btnPause);
-   pnlButton.add(btnNewWave);
+   
+   pnlButton.add(btnGameStart, BorderLayout.SOUTH);
+   pnlButton.add(btnEasy,BorderLayout.SOUTH);
+   pnlButton.add(btnMedium, BorderLayout.SOUTH);
+   pnlButton.add(nameID, BorderLayout.CENTER);
+   add(btnHard);
    add(pnlButton);
+   
+   nameID.setBackground(Color.BLUE);
+   nameID.setForeground(Color.WHITE);
+   
+   
   }
+   public void actionPerformed(ActionEvent e) {
+                userNameID = nameID.getText(); 
+                nameID.setText("");
+        }
   
 public void paint(Graphics g) { 
      
