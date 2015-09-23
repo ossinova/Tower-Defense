@@ -9,6 +9,7 @@ package application;
  *
  * @author OssiNova
  */
-public class GameScreenController {
+public class GameScreenController 
+{
     
 }

@@ -82,12 +82,6 @@ public class GameScreen extends JFrame {
          }
         g.drawImage(menuImage, 0, 0, 1200, 800, this);
     }
-        
-    public static void main(String[] args) {
-       
-        new GameScreen();
-        
-    }
 }
      
 
