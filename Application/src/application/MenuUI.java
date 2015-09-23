@@ -28,22 +28,32 @@ public class MenuUI extends JPanel implements ActionListener{
     private Image menuImage = null;
     private boolean isInMenu = true;
     // JPanel
-    JPanel pnlButton = new JPanel();
+    JPanel pnl = new JPanel();
     // Buttons
     JButton btnGameStart = new JButton("Start Game");
     JButton btnEasy = new JButton("Easy");
     JButton btnMedium = new JButton("Medium");
     JButton btnHard = new JButton("Hard");
+    JButton btnHighscore = new JButton("Highscore");
+    JButton btnLVL1 = new JButton("Level 1");
+    JButton btnLVL2 = new JButton("Level 2");
+    JButton btnLVL3 = new JButton("Level 3");
+    //Text Input Area
     JTextArea nameID = new JTextArea("Your Name");
     String userNameID;
+    //Text Field
+    JTextField instructions = new JTextField("Enter name, Select difficulity/Level and click Start Game");
   public MenuUI() {
-   
-   pnlButton.add(btnGameStart, BorderLayout.SOUTH);
-   pnlButton.add(btnEasy,BorderLayout.SOUTH);
-   pnlButton.add(btnMedium, BorderLayout.SOUTH);
-   pnlButton.add(nameID, BorderLayout.CENTER);
-   add(btnHard);
-   add(pnlButton);
+   //Buttons
+   pnl.add(btnGameStart, BorderLayout.SOUTH);
+   pnl.add(btnEasy,BorderLayout.SOUTH);
+   pnl.add(btnMedium, BorderLayout.SOUTH);
+   pnl.add(btnHard, BorderLayout.SOUTH);
+   //Text Input Area
+   pnl.add(nameID, BorderLayout.CENTER);
+   //TextField
+   pnl.add(instructions, BorderLayout.EAST);
+   add(pnl);
    
    nameID.setBackground(Color.BLUE);
    nameID.setForeground(Color.WHITE);
