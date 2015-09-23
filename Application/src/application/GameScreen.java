@@ -21,14 +21,22 @@ import java.net.URL;
  */
 public class GameScreen extends JPanel 
 {
+    private GameScreen gs;
+    private Player player;
+    private Level level;
+    private TurretListView tlv;
+    
     JButton pauseButton;
     JButton newWave;
     JButton sellButton;
     JButton moveButton;
     
+    String userName, health, money, score, levelName;
+    
     public GameScreen() 
     {
         super();
+        player = new Player();
         buttonSetup();
         setVisible(true);
     }
@@ -43,6 +51,25 @@ public class GameScreen extends JPanel
           add(sellButton);
         JButton moveButton = new JButton("Move Turret");
           add(moveButton);
+    }
+    
+    public void getUserInfo()
+    {
+        userName = player.getName();
+        health = Integer.toString(player.getHealth());
+        money = Integer.toString(player.getMoney());
+        score = Integer.toString(player.getScore());
+        levelName = level.getLevelName();
+    }
+    
+    public void diplaySetup()
+    {
+        
+    }
+    
+    public void paintComponents(Graphics g)
+    {
+        
     }
 }
      
