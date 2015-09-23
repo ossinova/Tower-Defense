@@ -7,6 +7,7 @@ package application;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.Serializable;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.awt.Toolkit;
  */
 public class Turret 
 {
-    final long TURRET_ID = 43L;
+    final long serialVersionUID = 102L;
     private int cost;
     private int damage;
     private int range; //I assume this will create a range * range square that will simulate the range

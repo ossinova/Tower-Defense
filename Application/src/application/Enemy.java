@@ -18,7 +18,7 @@ public class Enemy
     private int damage;
     private boolean isVisible;
     private int x;
-    private int y
+    private int y;
     
     public Enemy()
     {

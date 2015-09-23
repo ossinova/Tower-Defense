@@ -1,23 +1,22 @@
 package application;
 
+import java.io.Serializable;
 /**
  *
  * @author Ardjen
  */
 public class Player 
 {
+    final long serialVersionUID = 101L;
     private int health;
     private int money;
     private int score;
     private String userName;
-    //private Level level;
+    private Level level;
     
     public Player()
     {
-        this.setHealth(1);
-        this.setMoney(0);
-        this.setScore(0);
-        this.setName("");
+        
     }
     
     public void setHealth(int theHealth)

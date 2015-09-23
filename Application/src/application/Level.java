@@ -11,10 +11,11 @@ package application;
  */
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.Serializable;
 
 public class Level 
 {
-    final long LEVEL_ID = 42L;
+    final long serialVersionUID = 100L;
     private String levelName;
     private Image mapImage;
     
