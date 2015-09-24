@@ -18,6 +18,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -47,13 +48,15 @@ public class MenuUI extends JPanel implements ActionListener{
     JTextField nameID = new JTextField("Your Name");
     String userNameID;
     //Text Field
-    JTextField instructions = new JTextField("Enter name, Select difficulity/Level and click Start Game");
+   JLabel instructions = new JLabel("1. Enter yur user name 2.Select difficulity/Level 3.click Start Game");
     
     //TextFile for high score
      File f = null;
      String fileToRead = "hs.txt"; //high scores text file
      URL url = null;
- /* public void paint(Graphics g) { 
+     
+     @Override
+  public void paintComponents(Graphics g) { 
      
         
         if (isInMenu)
@@ -67,7 +70,7 @@ public class MenuUI extends JPanel implements ActionListener{
               //draw everything else
              getHighScore(g);
           }
-    } */
+    } 
      
      
      
@@ -100,7 +103,7 @@ public class MenuUI extends JPanel implements ActionListener{
   
 
 
-/*public void DrawMenu(Graphics g) {
+public void DrawMenu(Graphics g) {
             try {
                
            URL imagePath = this.getClass().getResource("MainMenu.png");
@@ -128,5 +131,5 @@ public void getHighScore(Graphics g) {
           }
           g.drawImage(highScoreImage, 0, 0, 1200, 800, this);
         }
-}*/
+}
 }
