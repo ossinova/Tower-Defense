@@ -21,7 +21,6 @@ import java.net.URL;
  */
 public class GameScreen extends JPanel 
 {
-    private GameScreen gs;
     private Player player;
     private Level level;
     private TurretListView tlv;
