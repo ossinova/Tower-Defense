@@ -20,18 +20,20 @@ public class MenuController extends JFrame
     
     public MenuController()
     {
-        setup();
-        GameScreen gs = new GameScreen();
-        add(gs);
+       MenuUI mui = new MenuUI();
+       add(mui);
+       setup();
     }
     
     public void setup()
     {
         setSize(1200, 800);
+        //setResizable(false);
         setBackground(Color.BLACK);
         setTitle("Classroom Defense");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         setVisible(true);
     }
 }
