@@ -14,6 +14,9 @@ import javax.swing.*;
 public class GameScreenController extends JFrame
 {
     private GameScreen gs;
+    protected JPanel menu;
+    protected JPanel board;
+    protected JPanel info;
     
     public GameScreenController()
     {
@@ -24,8 +27,6 @@ public class GameScreenController extends JFrame
         setTitle("Classroom Defense");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        showGameScreenController();
-        add(gs);
         
         setVisible(true);
         

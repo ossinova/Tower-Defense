@@ -19,7 +19,7 @@ import java.net.URL;
  *
  * @author OssiNova
  */
-public class GameScreen extends JPanel 
+public class GameScreen extends GameScreenController 
 {
     private Player player;
     private Level level;
