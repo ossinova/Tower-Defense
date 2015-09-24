@@ -14,19 +14,20 @@ import javax.swing.*;
 public class GameScreenController extends JFrame
 {
     private GameScreen gs;
-    protected JPanel menu;
-    protected JPanel board;
-    protected JPanel info;
     
     public GameScreenController()
     {
         GridLayout gl = new GridLayout(2, 1);
         setLayout(gl);
+
         setSize(1200, 800);
         setBackground(Color.BLACK);
         setTitle("Classroom Defense");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        showGameScreenController();
+        add(gs);
         
         setVisible(true);
         
@@ -37,7 +38,6 @@ public class GameScreenController extends JFrame
     {
         gs = new GameScreen();
         gs.setVisible(true);
-        add(gs);
     }
     
     public void setScreenVisible(boolean visibleState)

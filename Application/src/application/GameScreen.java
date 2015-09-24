@@ -5,60 +5,104 @@
  */
 package application;
 
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.net.URL;
+import java.awt.*;
+import javax.swing.*;
 /**
  *
  * @author OssiNova
  */
-public class GameScreen extends GameScreenController 
+public class GameScreen extends JPanel //implements ActionListener
 {
     private Player player;
     private Level level;
-    private TurretListView tlv;
+    private TurretListView turretList;
     
     JButton pauseButton;
     JButton newWave;
     JButton sellButton;
     JButton moveButton;
     
+    JLabel nameLabel;
+    JLabel healthLabel;
+    JLabel moneyLabel;
+    JLabel scoreLabel;
+    JLabel levelLabel;
+    
+    JPanel menu;
+    JPanel display;
+    JPanel board;
+    
+    
     String userName, health, money, score, levelName;
     
     public GameScreen() 
     {
         super();
+        GridLayout gl = new GridLayout(1, 1);
+        setLayout(gl);
+        
         player = new Player();
+        level = new Level();
+        
         buttonSetup();
+        userDisplaySetup();
+        
+        add(menu);
+        add(display);
+        
         setVisible(true);
     }
     
     public void buttonSetup()
     {
-        JButton pauseButton = new JButton("Pause");
-          add(pauseButton);
-        JButton newWave = new JButton("New Wave");
-          add(newWave);
-        JButton sellButton = new JButton("Sell Turret");
-          add(sellButton);
-        JButton moveButton = new JButton("Move Turret");
-          add(moveButton);
+        menu = new JPanel();
+        
+        pauseButton = new JButton("Pause");
+          menu.add(pauseButton);
+        newWave = new JButton("New Wave");
+          menu.add(newWave);
+        sellButton = new JButton("Sell Turret");
+         menu.add(sellButton);
+        moveButton = new JButton("Move Turret");
+         menu.add(moveButton);
     }
     
-    public void getUserInfo()
+    
+    public void userDisplaySetup()
     {
+        display = new JPanel();
+        
         userName = player.getName();
         health = Integer.toString(player.getHealth());
         money = Integer.toString(player.getMoney());
         score = Integer.toString(player.getScore());
         levelName = level.getLevelName();
+        
+        nameLabel = new JLabel(userName);
+         display.add(nameLabel);
+        healthLabel = new JLabel(health);
+          display.add(healthLabel);
+        moneyLabel = new JLabel(money);
+          display.add(moneyLabel);
+        scoreLabel = new JLabel(score);
+          display.add(scoreLabel);
+        levelLabel = new JLabel(levelName);
+          display.add(levelLabel);
+    }
+    
+    public void boardSetup()
+    {
+        board = new JPanel();
+    }
+    
+    public void placeTurret(Turret t)
+    {
+        
+    }
+    
+    public void loadLevel()
+    {
+        
     }
     
     public void diplaySetup()

@@ -20,7 +20,7 @@ public class Level
     
     public Level()
     {
-        
+        levelName = "Level 1";
     }
     
     public void setLevelName(String theLevelName)
