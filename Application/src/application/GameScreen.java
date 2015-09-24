@@ -38,7 +38,7 @@ public class GameScreen extends JPanel //implements ActionListener
     public GameScreen() 
     {
         super();
-        GridLayout gl = new GridLayout(1, 1);
+        GridLayout gl = new GridLayout(2, 1);
         setLayout(gl);
         
         player = new Player();
