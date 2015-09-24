@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -31,7 +32,8 @@ public class MenuUI extends JPanel implements ActionListener{
     private Image highScoreImage = null;
     private boolean isInMenu = true;
     // JPanel
-    JPanel pnl = new JPanel();
+    
+    
     // Buttons
     JButton btnGameStart = new JButton("Start Game");
     JButton btnEasy = new JButton("Easy");
@@ -42,7 +44,7 @@ public class MenuUI extends JPanel implements ActionListener{
     JButton btnLVL2 = new JButton("Level 2");
     JButton btnLVL3 = new JButton("Level 3");
     //Text Input Area
-    JTextArea nameID = new JTextArea("Your Name");
+    JTextField nameID = new JTextField("Your Name");
     String userNameID;
     //Text Field
     JTextField instructions = new JTextField("Enter name, Select difficulity/Level and click Start Game");
@@ -51,48 +53,54 @@ public class MenuUI extends JPanel implements ActionListener{
      File f = null;
      String fileToRead = "hs.txt"; //high scores text file
      URL url = null;
-  public MenuUI() {
-   //Buttons
-   pnl.add(btnGameStart, BorderLayout.SOUTH);
-   pnl.add(btnEasy,BorderLayout.SOUTH);
-   pnl.add(btnMedium, BorderLayout.SOUTH);
-   pnl.add(btnHard, BorderLayout.SOUTH);
-   //Text Input Area
-   pnl.add(nameID, BorderLayout.CENTER);
-   //TextField
-   pnl.add(instructions, BorderLayout.EAST);
-   add(pnl);
-   
-   nameID.setBackground(Color.BLUE);
-   nameID.setForeground(Color.WHITE);
-   
-   
-  }
-   public void actionPerformed(ActionEvent e) {
-                userNameID = nameID.getText(); 
-                nameID.setText("");
-        }
-  
-public void paint(Graphics g) { 
+ /* public void paint(Graphics g) { 
      
         
         if (isInMenu)
         { 
             //draw menu
             DrawMenu(g);
-        
+            
         }
       else
           {
               //draw everything else
              getHighScore(g);
           }
-    }
+    } */
+     
+     
+     
+     public MenuUI() {
+  
+    GridLayout bl = new GridLayout(3, 1);
+    setLayout(bl);
+    //Buttons
+   add(btnGameStart);
+   add(btnEasy);
+   add(btnMedium);
+   add(btnHard);
+   //Text Input Area
+   add(nameID);
+   //TextField
+   add(instructions);
+   
+   
+   
+   
+   
+   
+  }
+   public void actionPerformed(ActionEvent e) {
+                userNameID = nameID.getText(); 
+                nameID.setText("");
+                
+                
+        }
+  
 
-public void DrawMenu(Graphics g) {
 
-        if (this.menuImage == null) {
-
+/*public void DrawMenu(Graphics g) {
             try {
                
            URL imagePath = this.getClass().getResource("MainMenu.png");
@@ -102,7 +110,7 @@ public void DrawMenu(Graphics g) {
                 //image does not exist
                 e.printStackTrace();
             }
-        }
+        
         g.drawImage(menuImage, 0, 0, 1200, 800, this);
 }
 
@@ -120,5 +128,5 @@ public void getHighScore(Graphics g) {
           }
           g.drawImage(highScoreImage, 0, 0, 1200, 800, this);
         }
-}
+}*/
 }
