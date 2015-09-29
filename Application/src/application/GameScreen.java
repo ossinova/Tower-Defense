@@ -7,11 +7,12 @@ package application;
 
 import java.awt.*;
 import javax.swing.*;
+
 /**
  *
  * @author OssiNova
  */
-public class GameScreen extends JPanel //implements ActionListener
+public class GameScreen extends JFrame //implements ActionListener
 {
     private Player player;
     private Level level;
@@ -33,7 +34,7 @@ public class GameScreen extends JPanel //implements ActionListener
     JPanel board;
     
     
-    String userName, health, money, score, levelName;
+    String health, money, score, levelName;
     
     public GameScreen() 
     {
@@ -50,7 +51,16 @@ public class GameScreen extends JPanel //implements ActionListener
         add(menu);
         add(display);
         
+        setSize(1200, 800);
+        //setResizable(false);
+        setBackground(Color.BLACK);
+        setTitle("Classroom Defense");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        
+       
+    
     }
     
     public void buttonSetup()
@@ -72,10 +82,13 @@ public class GameScreen extends JPanel //implements ActionListener
     {
         display = new JPanel();
         
-        userName = player.getName();
+        
         health = Integer.toString(player.getHealth());
         money = Integer.toString(player.getMoney());
         score = Integer.toString(player.getScore());
+        Player cc = new Player();
+        String userName = player.getName();
+        System.out.println(" Name: " + userName);
         levelName = level.getLevelName();
         
         nameLabel = new JLabel(userName);
@@ -88,6 +101,7 @@ public class GameScreen extends JPanel //implements ActionListener
           display.add(scoreLabel);
         levelLabel = new JLabel(levelName);
           display.add(levelLabel);
+        
     }
     
     public void boardSetup()
