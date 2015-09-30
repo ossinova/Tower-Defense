@@ -47,9 +47,7 @@ public class GameScreen extends JFrame //implements ActionListener
         
         buttonSetup();
         userDisplaySetup();
-        
-        add(menu);
-        add(display);
+        boardSetup();
         
         setSize(1200, 800);
         //setResizable(false);
@@ -59,8 +57,9 @@ public class GameScreen extends JFrame //implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
-       
-    
+        add(menu);
+        add(display);
+        add(board);
     }
     
     public void buttonSetup()
@@ -107,7 +106,24 @@ public class GameScreen extends JFrame //implements ActionListener
     
     public void boardSetup()
     {
+        int width = 600;
+        int height = 600;
         board = new JPanel();
+        board.setSize(width, height);
+        GridLayout gl = new GridLayout(width/10, height/10);
+        board.setLayout(gl);
+
+        for(int x = 0; x < width; x++)
+        {
+            for(int y = 0; y < height; y++)
+            {
+                if(x % 10 == 0 && y % 10 ==0)
+                {
+                    JButton btn = new JButton(x+", "+y);
+                    board.add(btn);
+                }
+            }
+        }
     }
     
     public void placeTurret(Turret t)
@@ -125,10 +141,10 @@ public class GameScreen extends JFrame //implements ActionListener
         
     }
     
-    public void paintComponents(Graphics g)
-    {
+    //public void paintComponents(Graphics g)
+    //{
         
-    }
+    //}
 }
      
 
