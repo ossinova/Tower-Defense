@@ -39,10 +39,10 @@ public class GameScreen extends JFrame //implements ActionListener
     public GameScreen() 
     {
         super();
-        //GridLayout gl = new GridLayout(3, 1, 10, 10);
-        //setLayout(gl);
-        BorderLayout bl = new BorderLayout();
-        setLayout(bl);
+       // BorderLayout bl = new BorderLayout();
+        //setLayout(bl);
+        
+        setLayout(null);
         
         player = new Player();
         level = new Level();
@@ -58,9 +58,16 @@ public class GameScreen extends JFrame //implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
-        add(board, BorderLayout.CENTER);
-        add(menu, BorderLayout. NORTH);
-        add(display, BorderLayout.SOUTH);
+        board.setBounds(0, 40, 720, 720);
+        menu.setBounds(0, 0, 1200, 40);
+        display.setBounds(720, 20, 200, 600);
+        add(board);
+        add(menu);
+        add(display);
+        
+        //add(board, BorderLayout.CENTER);
+        //add(menu, BorderLayout. NORTH);
+        //add(display, BorderLayout.EAST);
     }
     
     public void buttonSetup()
@@ -81,9 +88,10 @@ public class GameScreen extends JFrame //implements ActionListener
     public void userDisplaySetup()
     {
         display = new JPanel();
-        display.setSize(300, 100);
-        GridLayout gl= new GridLayout(2, 3);
+        GridLayout gl= new GridLayout(5, 1);
         display.setLayout(gl);
+        
+        Font f = new Font("Impact", Font.BOLD, 50);
         
         health = Integer.toString(player.getHealth());
         money = Integer.toString(player.getMoney());
@@ -92,31 +100,38 @@ public class GameScreen extends JFrame //implements ActionListener
         userName = player.getName();
         
         nameLabel = new JLabel(userName);
+          nameLabel.setFont(f);
          display.add(nameLabel);
         healthLabel = new JLabel(health);
+          healthLabel.setFont(f);
           display.add(healthLabel);
         moneyLabel = new JLabel(money);
+          moneyLabel.setFont(f);
           display.add(moneyLabel);
         scoreLabel = new JLabel(score);
+          scoreLabel.setFont(f);
           display.add(scoreLabel);
         levelLabel = new JLabel(levelName);
+          levelLabel.setFont(f);
           display.add(levelLabel);
     }
     
     public void boardSetup()
     {
-        int width = 600;
-        int height = 600;
+        int width = 720;
+        int height = 720;
         board = new JPanel();
         board.setSize(width, height);
+        board.setLayout(null);
 
         for(int x = 0; x < width; x++)
         {
             for(int y = 0; y < height; y++)
             {
-                if(x % 10 == 0 && y % 10 ==0)
+                if(x % 60 == 0 && y % 60 ==0)
                 {
                     JButton btn = new JButton();
+                    btn.setBounds(x, y, 60, 60);
                     board.add(btn);
                 }
             }
