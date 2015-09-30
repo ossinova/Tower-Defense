@@ -19,6 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -45,11 +46,12 @@ public class MenuUI extends JPanel implements ActionListener{
     JButton btnLVL2 = new JButton("Level 2");
     JButton btnLVL3 = new JButton("Level 3");
     //Text Input Area
-    JTextField nameID = new JTextField("Your Name");
+    JTextField nameID = new JTextField("Enter username:");
     String userNameID;
     //Text Field
    JLabel instructions = new JLabel("1. Enter yur user name 2.Select difficulity/Level 3.click Start Game");
     
+   boolean userNameEntered = false;
     //TextFile for high score
      File f = null;
      String fileToRead = "hs.txt"; //high scores text file
@@ -68,7 +70,7 @@ public class MenuUI extends JPanel implements ActionListener{
       else
           {
               //draw everything else
-             getHighScore(g);
+           
           }
     } 
      
@@ -88,19 +90,52 @@ public class MenuUI extends JPanel implements ActionListener{
    //TextField
    add(instructions);
    
-   
-   
-   
-   
-   
-  }
-   public void actionPerformed(ActionEvent e) {
-                userNameID = nameID.getText(); 
-                nameID.setText("");
-                
-                
-        }
   
+  nameID.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+         
+       
+          userNameID = nameID.getText(); 
+          System.out.print("Username: " + userNameID);
+          
+          userNameEntered = true;
+          Player userName = new Player(nameID.getText());
+          
+                
+                
+         
+   }
+    
+  });
+  
+ btnGameStart.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+                
+                
+                
+             //Is username entered?    
+                
+              if (userNameEntered == true) {
+                  //If yes, open GameScreen
+                    GameScreen gs = new GameScreen();
+                    gs.setVisible(true);
+                    setVisible(false);
+                    
+                }
+                else {
+                  //If no, give a warning
+                     JOptionPane.showMessageDialog(null, "Please enter a username!", "EMPTY USERNAME" ,JOptionPane.WARNING_MESSAGE);
+                     
+                }
+                
+      
+        }
+   
+
+   
+  });
+  
+}
 
 
 public void DrawMenu(Graphics g) {
@@ -117,19 +152,8 @@ public void DrawMenu(Graphics g) {
         g.drawImage(menuImage, 0, 0, 1200, 800, this);
 }
 
-public void getHighScore(Graphics g) {
-        if (this.highScoreImage == null) {
-         try {
-              
-             URL imagePath = this.getClass().getResource("bezos_kindle_fire_hd");
-             this.highScoreImage = Toolkit.getDefaultToolkit().getImage(imagePath);
-          }
-          catch(Exception e2){
-          
-             e2.printStackTrace();
-         
-          }
-          g.drawImage(highScoreImage, 0, 0, 1200, 800, this);
-        }
-}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

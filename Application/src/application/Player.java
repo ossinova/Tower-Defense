@@ -16,9 +16,13 @@ public class Player
     
     public Player()
     {
+        this.setHealth(100);
+        this.setMoney(30);
+        this.setScore(0);
         
     }
-    
+
+   
     public void setHealth(int theHealth)
     {
         health = theHealth;
@@ -49,9 +53,10 @@ public class Player
         return score;
     }
     
-    public void setName(String theName)
+    public Player(String userName)
     {
-        userName = theName;
+        this.userName = userName;
+        System.out.println(" Player name: " + userName);
     }
     
     public String getName()
