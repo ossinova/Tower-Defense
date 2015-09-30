@@ -17,12 +17,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
+
 
 /**
  *
@@ -37,7 +33,7 @@ public class MenuUI extends JPanel implements ActionListener{
     
     
     // Buttons
-    JButton btnGameStart = new JButton("Start Game");
+    JButton btnGameStart = new JButton();
     JButton btnEasy = new JButton("Easy");
     JButton btnMedium = new JButton("Medium");
     JButton btnHard = new JButton("Hard");
@@ -46,10 +42,11 @@ public class MenuUI extends JPanel implements ActionListener{
     JButton btnLVL2 = new JButton("Level 2");
     JButton btnLVL3 = new JButton("Level 3");
     //Text Input Area
-    JTextField nameID = new JTextField("Enter username:");
+    JTextField nameID = new JTextField("");
     String userNameID;
-    //Text Field
-   JLabel instructions = new JLabel("1. Enter yur user name 2.Select difficulity/Level 3.click Start Game");
+    //Text Fields
+   JLabel name = new JLabel("Enter username: "); 
+   JLabel instructions = new JLabel("<html>1. Enter yur user name <br> 2.Select difficulity/Level <br> 3.click Start Game</html>");
     
    boolean userNameEntered = false;
     //TextFile for high score
@@ -78,17 +75,32 @@ public class MenuUI extends JPanel implements ActionListener{
      
      public MenuUI() {
   
-    GridLayout bl = new GridLayout(3, 1);
-    setLayout(bl);
+        
+
+    
+    setLayout(null);
     //Buttons
+ImageIcon imageRon = new ImageIcon("images/1211792790.png");
+//creates the image to be used in a JButton
+btnGameStart = new JButton(imageRon); //JButton created with an image
+btnGameStart = new JButton();
+btnGameStart.setIcon(imageRon);// image added after the button is already created
    add(btnGameStart);
+   btnGameStart.setBounds(150,700,100,50);
    add(btnEasy);
+   btnEasy.setBounds(250,700,100,50);
    add(btnMedium);
+   btnMedium.setBounds(350,700,100,50);
    add(btnHard);
+   btnHard.setBounds(450,700,100,50);
    //Text Input Area
+   add(name);
+   name.setBounds(570,700,100,50);
    add(nameID);
+   nameID.setBounds(670,700,200,50);
    //TextField
    add(instructions);
+   instructions.setBounds(900,700,200,50);
    
   
   nameID.addActionListener(new ActionListener() {
@@ -141,7 +153,7 @@ public class MenuUI extends JPanel implements ActionListener{
 public void DrawMenu(Graphics g) {
             try {
                
-           URL imagePath = this.getClass().getResource("MainMenu.png");
+           URL imagePath = this.getClass().getResource("images/MainMenu.png");
            this.menuImage = Toolkit.getDefaultToolkit().getImage(imagePath);
             } 
             catch (Exception e) {
