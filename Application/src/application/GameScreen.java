@@ -60,7 +60,7 @@ public class GameScreen extends JFrame //implements ActionListener
         
         board.setBounds(0, 40, 720, 720);
         menu.setBounds(0, 0, 1200, 40);
-        display.setBounds(720, 20, 200, 600);
+        display.setBounds(720, 20, 300, 600);
         add(board);
         add(menu);
         add(display);
@@ -91,7 +91,7 @@ public class GameScreen extends JFrame //implements ActionListener
         GridLayout gl= new GridLayout(5, 1);
         display.setLayout(gl);
         
-        Font f = new Font("Impact", Font.BOLD, 50);
+        Font f = new Font("Impact", Font.BOLD, 40);
         
         health = Integer.toString(player.getHealth());
         money = Integer.toString(player.getMoney());
@@ -99,16 +99,16 @@ public class GameScreen extends JFrame //implements ActionListener
         levelName = level.getLevelName();
         userName = player.getName();
         
-        nameLabel = new JLabel(userName);
+        nameLabel = new JLabel("Name: "+userName);
           nameLabel.setFont(f);
          display.add(nameLabel);
-        healthLabel = new JLabel(health);
+        healthLabel = new JLabel("HP: "+health);
           healthLabel.setFont(f);
           display.add(healthLabel);
-        moneyLabel = new JLabel(money);
+        moneyLabel = new JLabel("Money: "+money);
           moneyLabel.setFont(f);
           display.add(moneyLabel);
-        scoreLabel = new JLabel(score);
+        scoreLabel = new JLabel("Score: "+score);
           scoreLabel.setFont(f);
           display.add(scoreLabel);
         levelLabel = new JLabel(levelName);
@@ -132,6 +132,7 @@ public class GameScreen extends JFrame //implements ActionListener
                 {
                     JButton btn = new JButton();
                     btn.setBounds(x, y, 60, 60);
+                    btn.setBackground(new Color(255,255,255));
                     board.add(btn);
                 }
             }
