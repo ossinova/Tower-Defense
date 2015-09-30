@@ -18,7 +18,7 @@ public class Application
     
     public Application()
     {
-        MenuController mc = new MenuController();
-        //GameScreenController gsc = new GameScreenController();
+        //MenuController mc = new MenuController();
+        GameScreenController gsc = new GameScreenController();
     }
 }

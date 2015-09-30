@@ -39,8 +39,10 @@ public class GameScreen extends JFrame //implements ActionListener
     public GameScreen() 
     {
         super();
-        GridLayout gl = new GridLayout(2, 1);
-        setLayout(gl);
+        //GridLayout gl = new GridLayout(3, 1, 10, 10);
+        //setLayout(gl);
+        BorderLayout bl = new BorderLayout();
+        setLayout(bl);
         
         player = new Player();
         level = new Level();
@@ -51,15 +53,14 @@ public class GameScreen extends JFrame //implements ActionListener
         
         setSize(1200, 800);
         //setResizable(false);
-        setBackground(Color.BLACK);
         setTitle("Classroom Defense");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
-        add(menu);
-        add(display);
-        add(board);
+        add(board, BorderLayout.CENTER);
+        add(menu, BorderLayout. NORTH);
+        add(display, BorderLayout.SOUTH);
     }
     
     public void buttonSetup()
@@ -80,16 +81,15 @@ public class GameScreen extends JFrame //implements ActionListener
     public void userDisplaySetup()
     {
         display = new JPanel();
-        
+        display.setSize(300, 100);
+        GridLayout gl= new GridLayout(2, 3);
+        display.setLayout(gl);
         
         health = Integer.toString(player.getHealth());
         money = Integer.toString(player.getMoney());
         score = Integer.toString(player.getScore());
         levelName = level.getLevelName();
-        //Get Username
         userName = player.getName();
-        System.out.println(" Name: " + userName);
-        
         
         nameLabel = new JLabel(userName);
          display.add(nameLabel);
@@ -101,7 +101,6 @@ public class GameScreen extends JFrame //implements ActionListener
           display.add(scoreLabel);
         levelLabel = new JLabel(levelName);
           display.add(levelLabel);
-        
     }
     
     public void boardSetup()
@@ -110,8 +109,6 @@ public class GameScreen extends JFrame //implements ActionListener
         int height = 600;
         board = new JPanel();
         board.setSize(width, height);
-        GridLayout gl = new GridLayout(width/10, height/10);
-        board.setLayout(gl);
 
         for(int x = 0; x < width; x++)
         {
@@ -119,7 +116,7 @@ public class GameScreen extends JFrame //implements ActionListener
             {
                 if(x % 10 == 0 && y % 10 ==0)
                 {
-                    JButton btn = new JButton(x+", "+y);
+                    JButton btn = new JButton();
                     board.add(btn);
                 }
             }
@@ -140,11 +137,6 @@ public class GameScreen extends JFrame //implements ActionListener
     {
         
     }
-    
-    //public void paintComponents(Graphics g)
-    //{
-        
-    //}
 }
      
 

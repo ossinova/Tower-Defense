@@ -17,9 +17,6 @@ public class GameScreenController extends JFrame
     
     public GameScreenController()
     {
-        GridLayout gl = new GridLayout(2, 1);
-        setLayout(gl);
-
         setSize(1200, 800);
         setBackground(Color.BLACK);
         setTitle("Classroom Defense");
@@ -27,11 +24,10 @@ public class GameScreenController extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         showGameScreenController();
-        add(gs);
         
         setVisible(true);
         
-        
+        pack();
     }
     
     public void showGameScreenController()
