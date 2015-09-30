@@ -34,7 +34,7 @@ public class GameScreen extends JFrame //implements ActionListener
     JPanel board;
     
     
-    String health, money, score, levelName;
+    String userName, health, money, score, levelName;
     
     public GameScreen() 
     {
@@ -86,10 +86,11 @@ public class GameScreen extends JFrame //implements ActionListener
         health = Integer.toString(player.getHealth());
         money = Integer.toString(player.getMoney());
         score = Integer.toString(player.getScore());
-        Player cc = new Player();
-        String userName = player.getName();
-        System.out.println(" Name: " + userName);
         levelName = level.getLevelName();
+        //Get Username
+        userName = player.getName();
+        System.out.println(" Name: " + userName);
+        
         
         nameLabel = new JLabel(userName);
          display.add(nameLabel);

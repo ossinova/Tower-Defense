@@ -113,14 +113,17 @@ public class MenuUI extends JPanel implements ActionListener{
                 
                 
                 
-                
+             //Is username entered?    
                 
               if (userNameEntered == true) {
+                  //If yes, open GameScreen
                     GameScreen gs = new GameScreen();
                     gs.setVisible(true);
-                
+                    setVisible(false);
+                    
                 }
                 else {
+                  //If no, give a warning
                      JOptionPane.showMessageDialog(null, "Please enter a username!", "EMPTY USERNAME" ,JOptionPane.WARNING_MESSAGE);
                      
                 }
