@@ -15,24 +15,25 @@ public class GameScreenController extends JFrame
 {
     private GameScreen gs;
     
-    public GameScreenController()
+    public GameScreenController(Player p)
     {
         setSize(1200, 800);
-        setBackground(Color.BLACK);
+        setLayout(null);
         setTitle("Classroom Defense");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        showGameScreenController();
+        gs = new GameScreen(p);
+        //gs.setBounds(0,0, 1200, 800);
+        add(gs);
         
         setVisible(true);
         
-        pack();
     }
     
     public void showGameScreenController()
     {
-        gs = new GameScreen();
+        //gs = new GameScreen();
         gs.setVisible(true);
     }
     
@@ -41,5 +42,9 @@ public class GameScreenController extends JFrame
         gs.setVisible(visibleState);
     }
     
+    public GameScreen getGameScreen()
+    {
+        return gs;
+    }
     
 }

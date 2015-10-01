@@ -53,9 +53,9 @@ public class Player
         return score;
     }
     
-    public Player(String userName)
+    public void setName(String theUserName)
     {
-        this.userName = userName;
+        this.userName = theUserName;
         System.out.println(" Player name: " + userName);
     }
     

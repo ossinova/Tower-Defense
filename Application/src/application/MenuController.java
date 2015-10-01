@@ -15,12 +15,13 @@ public class MenuController extends JFrame
     final int SCREEN_WIDTH = 1200;
     final int SCREEN_HEIGHT = 800;
     
+    MenuUI mui;
     //private MenuUI mainMenu;
     private GameScreen gameScreen;
     
     public MenuController()
     {
-       MenuUI mui = new MenuUI();
+       mui = new MenuUI();
        add(mui);
        setup();
     }
@@ -35,5 +36,10 @@ public class MenuController extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         setVisible(true);
+    }
+    
+    public MenuUI getMUI()
+    {
+        return mui;
     }
 }

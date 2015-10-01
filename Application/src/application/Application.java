@@ -11,6 +11,8 @@ package application;
  */
 public class Application 
 {
+    Player p;
+    
     public static void main(String[] args)
     {
         Application game = new Application();
@@ -18,7 +20,20 @@ public class Application
     
     public Application()
     {
+        p = new Player();
         MenuController mc = new MenuController();
-        GameScreenController gsc = new GameScreenController();
+        while(mc.getMUI().isVisible())
+        {
+            if(mc.getMUI().isVisible())
+            {
+                mc.setVisible(true);
+            }
+            if(!mc.getMUI().isVisible())
+            {
+                mc.setVisible(false);
+                p = mc.getMUI().getPlayer();
+                GameScreenController gmc = new GameScreenController(p);
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ import javax.swing.*;
  *
  * @author OssiNova
  */
-public class GameScreen extends JFrame //implements ActionListener
+public class GameScreen extends JPanel //implements ActionListener
 {
     private Player player;
     private Level level;
@@ -36,13 +36,13 @@ public class GameScreen extends JFrame //implements ActionListener
     
     String userName, health, money, score, levelName;
     
-    public GameScreen() 
+    public GameScreen(Player p) 
     {
         super();
-
+         
         setLayout(null);
         
-        player = new Player();
+        player = p;
         level = new Level();
         
         buttonSetup();
@@ -50,10 +50,6 @@ public class GameScreen extends JFrame //implements ActionListener
         boardSetup();
         
         setSize(1200, 800);
-        setResizable(false);
-        setTitle("Classroom Defense");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
         board.setBounds(0, 40, 720, 720);
@@ -147,6 +143,11 @@ public class GameScreen extends JFrame //implements ActionListener
     public void diplaySetup()
     {
         
+    }
+    
+    public void setPlayer(Player p)
+    {
+        player = p;
     }
 }
      

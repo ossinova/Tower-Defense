@@ -29,6 +29,8 @@ public class MenuUI extends JPanel implements ActionListener{
     private Image menuImage = null;
     private Image highScoreImage = null;
     private boolean isInMenu = true;
+    
+    private Player p;
     // JPanel
     
     
@@ -106,12 +108,13 @@ btnGameStart.setIcon(imageRon);// image added after the button is already create
   nameID.addActionListener(new ActionListener() {
    public void actionPerformed(ActionEvent e) {
          
-       
+          p = new Player();
+          p.setName(nameID.getText());
           userNameID = nameID.getText(); 
           System.out.print("Username: " + userNameID);
           
           userNameEntered = true;
-          Player userName = new Player(nameID.getText());
+          
           
                 
                 
@@ -130,9 +133,6 @@ btnGameStart.setIcon(imageRon);// image added after the button is already create
               if (userNameEntered == true) {
                   //If yes, open GameScreen
                     setVisible(false);
-                    MenuController.dispose();
-                    GameScreen gs = new GameScreen();
-                    gs.setVisible(true);
                     
                     
                 }
@@ -169,5 +169,10 @@ public void DrawMenu(Graphics g) {
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public Player getPlayer()
+    {
+        return p;
     }
 }
