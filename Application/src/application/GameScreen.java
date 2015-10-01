@@ -39,9 +39,7 @@ public class GameScreen extends JFrame //implements ActionListener
     public GameScreen() 
     {
         super();
-       // BorderLayout bl = new BorderLayout();
-        //setLayout(bl);
-        
+
         setLayout(null);
         
         player = new Player();
@@ -52,7 +50,7 @@ public class GameScreen extends JFrame //implements ActionListener
         boardSetup();
         
         setSize(1200, 800);
-        //setResizable(false);
+        setResizable(false);
         setTitle("Classroom Defense");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,10 +62,6 @@ public class GameScreen extends JFrame //implements ActionListener
         add(board);
         add(menu);
         add(display);
-        
-        //add(board, BorderLayout.CENTER);
-        //add(menu, BorderLayout. NORTH);
-        //add(display, BorderLayout.EAST);
     }
     
     public void buttonSetup()
@@ -122,6 +116,7 @@ public class GameScreen extends JFrame //implements ActionListener
         int height = 720;
         board = new JPanel();
         board.setSize(width, height);
+        //board.setBackground();
         board.setLayout(null);
 
         for(int x = 0; x < width; x++)
