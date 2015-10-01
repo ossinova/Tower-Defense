@@ -129,9 +129,11 @@ btnGameStart.setIcon(imageRon);// image added after the button is already create
                 
               if (userNameEntered == true) {
                   //If yes, open GameScreen
+                    setVisible(false);
+                    MenuController.dispose();
                     GameScreen gs = new GameScreen();
                     gs.setVisible(true);
-                    setVisible(false);
+                    
                     
                 }
                 else {
