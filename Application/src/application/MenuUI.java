@@ -15,8 +15,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
@@ -82,13 +84,20 @@ public class MenuUI extends JPanel implements ActionListener{
     
     setLayout(null);
     //Buttons
-ImageIcon imageRon = new ImageIcon("images/1211792790.png");
-//creates the image to be used in a JButton
-btnGameStart = new JButton(imageRon); //JButton created with an image
+
 btnGameStart = new JButton();
-btnGameStart.setIcon(imageRon);// image added after the button is already created
+ try {
+    Image img = ImageIO.read(getClass().getResource("images/play2.png"));
+    btnGameStart.setIcon(new ImageIcon(img));
+    btnGameStart.setBorderPainted(false);
+    btnGameStart.setFocusPainted(false);
+    btnGameStart.setContentAreaFilled(false);
+    
+  } catch (IOException ex) {
+  }
+
    add(btnGameStart);
-   btnGameStart.setBounds(150,700,100,50);
+   btnGameStart.setBounds(50,650,100,100);
    add(btnEasy);
    btnEasy.setBounds(250,700,100,50);
    add(btnMedium);
