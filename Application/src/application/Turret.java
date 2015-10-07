@@ -8,6 +8,7 @@ package application;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.Serializable;
+import javax.swing.JButton;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Turret
     private int rateOfFire;
     private Image turretImage;
     private boolean isLocked;
+    private JButton turret;
     
     public Turret()
     {
@@ -70,7 +72,7 @@ public class Turret
     
     public void setTurretImage(String turretImageFileLocation)
     {
-        turretImage = Toolkit.getDefaultToolkit().getImage(turretImageFileLocation);
+        turretImage = Toolkit.getDefaultToolkit().getImage("images/turret.png");
     }
     
     public Image getTurretImage()

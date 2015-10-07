@@ -17,7 +17,7 @@ public class GameScreen extends JPanel //implements ActionListener
     private Player player;
     private Level level;
     private TurretListView turretList;
-    
+    private Turret turret;
     JButton pauseButton;
     JButton newWave;
     JButton sellButton;
@@ -33,6 +33,7 @@ public class GameScreen extends JPanel //implements ActionListener
     JPanel display;
     JPanel board;
     
+    Image turretImage;
     
     String userName, health, money, score, levelName;
     
@@ -81,13 +82,14 @@ public class GameScreen extends JPanel //implements ActionListener
         GridLayout gl= new GridLayout(5, 1);
         display.setLayout(gl);
         
-        Font f = new Font("Impact", Font.BOLD, 40);
+        Font f = new Font("Impact", Font.BOLD, 20);
         
         health = Integer.toString(player.getHealth());
         money = Integer.toString(player.getMoney());
         score = Integer.toString(player.getScore());
         levelName = level.getLevelName();
         userName = player.getName();
+        
         
         nameLabel = new JLabel("Name: "+userName);
           nameLabel.setFont(f);
@@ -104,7 +106,18 @@ public class GameScreen extends JPanel //implements ActionListener
         levelLabel = new JLabel(levelName);
           levelLabel.setFont(f);
           display.add(levelLabel);
+         
+        JButton paperBTN = new JButton("Paper");
+        display.add(paperBTN);
+          
+         JButton eraserBTN = new JButton("Eraser");
+        display.add(eraserBTN);
+        
+         JButton pencilBTN = new JButton("Pencil");
+        display.add(pencilBTN);
+        
     }
+    
     
     public void boardSetup()
     {
