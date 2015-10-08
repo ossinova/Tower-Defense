@@ -6,6 +6,8 @@
 package application;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -35,6 +37,10 @@ public class GameScreen extends JPanel //implements ActionListener
     
     Image turretImage;
     
+    JButton paperBTN = new JButton("Paper");
+    JButton eraserBTN = new JButton("Eraser"); 
+    JButton pencilBTN = new JButton("Pencil");
+
     String userName, health, money, score, levelName;
     
     public GameScreen(Player p) 
@@ -59,6 +65,9 @@ public class GameScreen extends JPanel //implements ActionListener
         add(board);
         add(menu);
         add(display);
+        
+        
+
     }
     
     public void buttonSetup()
@@ -106,14 +115,11 @@ public class GameScreen extends JPanel //implements ActionListener
         levelLabel = new JLabel(levelName);
           levelLabel.setFont(f);
           display.add(levelLabel);
+          levelLabel.setBounds(250,700,100,50);
          
-        JButton paperBTN = new JButton("Paper");
+      
         display.add(paperBTN);
-          
-         JButton eraserBTN = new JButton("Eraser");
         display.add(eraserBTN);
-        
-         JButton pencilBTN = new JButton("Pencil");
         display.add(pencilBTN);
         
     }
@@ -136,11 +142,14 @@ public class GameScreen extends JPanel //implements ActionListener
                 {
                     JButton btn = new JButton();
                     btn.setBounds(x, y, 60, 60);
-                    btn.setBackground(new Color(255,255,255));
-                    board.add(btn);
-                }
+                    btn.setBackground(new Color(34,139,34));
+                    board.add(btn);   
+                
+                     
+                 }
             }
-        }
+        
+    }
     }
     
     public void placeTurret(Turret t)

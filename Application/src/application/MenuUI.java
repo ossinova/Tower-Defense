@@ -28,7 +28,7 @@ import javax.swing.*;
  */
 public class MenuUI extends JPanel implements ActionListener{
    
-    private Image menuImage = null;
+    private Image menuImage;
     private Image highScoreImage = null;
     private boolean isInMenu = true;
     
@@ -57,24 +57,6 @@ public class MenuUI extends JPanel implements ActionListener{
      File f = null;
      String fileToRead = "hs.txt"; //high scores text file
      URL url = null;
-     
-     @Override
-  public void paintComponents(Graphics g) { 
-     
-        
-        if (isInMenu)
-        { 
-            //draw menu
-            DrawMenu(g);
-            
-        }
-      else
-          {
-              //draw everything else
-           
-          }
-    } 
-     
      
      
      public MenuUI() {
@@ -161,19 +143,6 @@ btnGameStart = new JButton();
 }
 
 
-public void DrawMenu(Graphics g) {
-            try {
-               
-           URL imagePath = this.getClass().getResource("images/MainMenu.png");
-           this.menuImage = Toolkit.getDefaultToolkit().getImage(imagePath);
-            } 
-            catch (Exception e) {
-                //image does not exist
-                e.printStackTrace();
-            }
-        
-        g.drawImage(menuImage, 0, 0, 1200, 800, this);
-}
 
     @Override
     public void actionPerformed(ActionEvent e) {

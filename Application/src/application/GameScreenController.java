@@ -23,7 +23,7 @@ public class GameScreenController extends JFrame
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        gs = new GameScreen(p);
+        gs = new GameScreen(p) {};
         //gs.setBounds(0,0, 1200, 800);
         add(gs);
         

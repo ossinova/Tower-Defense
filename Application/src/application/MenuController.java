@@ -28,6 +28,7 @@ public class MenuController extends JFrame
     
     public void setup()
     {
+        
         setSize(1200, 800);
         //setResizable(false);
         setBackground(Color.BLACK);
