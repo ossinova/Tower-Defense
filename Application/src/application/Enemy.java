@@ -17,12 +17,13 @@ public class Enemy
     private int speed;
     private int damage;
     private boolean isVisible;
-    private int x;
-    private int y;
+    private int pathLocation;
     
-    public Enemy()
+    public Enemy(int theLevel)
     {
-        
+        health = 5 + theLevel;
+        speed = 1 + ((int)(theLevel / 5));
+        damage = 1 + theLevel;
     }
     
     public void setHealth(int theHealth)
@@ -68,24 +69,14 @@ public class Enemy
     {
         return isVisible;
     }
-    
-    public void setX(int theX)
+   
+    public void setPathLocation(int theLocation)
     {
-        x = theX;
+        pathLocation = theLocation;
     }
     
-    public int getX()
+    public int getPathLocation()
     {
-        return x;
-    }
-    
-    public void setY(int theY)
-    {
-        y = theY;
-    }
-    
-    public int getY()
-    {
-        return y;
+        return pathLocation;
     }
 }
