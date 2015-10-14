@@ -31,9 +31,9 @@ public class GameScreen extends JPanel //implements ActionListener
     JLabel scoreLabel;
     JLabel levelLabel;
     
-    JPanel menu;
-    JPanel display;
-    JPanel board;
+    protected JPanel menu;
+    protected JPanel display;
+    protected JPanel board;
     
     Image turretImage;
     
@@ -187,6 +187,10 @@ public class GameScreen extends JPanel //implements ActionListener
         public void actionPerformed(ActionEvent e)
         {
             System.out.println("Tile was clicked");
+            JButton newButton = (JButton)e.getSource();
+            newButton.setBackground(Color.RED);
+            board.remove((JButton)e.getSource());
+            board.add(newButton);
             //Find which tile was clicked
             //Determine if a tower can be placed
             //Set tile icon accordingly
