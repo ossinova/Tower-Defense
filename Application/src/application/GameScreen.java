@@ -169,7 +169,7 @@ public class GameScreen extends JPanel //implements ActionListener
                         if(counter == path[i])
                         {
                             btn.setBackground(Color.RED);
-                            btn.removeActionListener(new tileListner());
+                            btn.removeActionListener(new tileListener());
                         }
                     }
                     board.add(btn);
