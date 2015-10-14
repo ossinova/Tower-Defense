@@ -45,6 +45,7 @@ public class MenuUI extends JPanel implements ActionListener{
     JButton btnLVL1 = new JButton("Level 1");
     JButton btnLVL2 = new JButton("Level 2");
     JButton btnLVL3 = new JButton("Level 3");
+    JButton btnICON = new JButton();
     //Text Input Area
     JTextField nameID = new JTextField("");
     String userNameID;
@@ -61,19 +62,28 @@ public class MenuUI extends JPanel implements ActionListener{
      
      public MenuUI() {
   
-        
+    
 
     
     setLayout(null);
     //Buttons
 
-btnGameStart = new JButton();
+
  try {
     Image img = ImageIO.read(getClass().getResource("images/play2.png"));
     btnGameStart.setIcon(new ImageIcon(img));
     btnGameStart.setBorderPainted(false);
     btnGameStart.setFocusPainted(false);
     btnGameStart.setContentAreaFilled(false);
+    
+  } catch (IOException ex) {
+  }
+  try {
+    Image img2 = ImageIO.read(getClass().getResource("images/MainMenu.png"));
+    btnICON.setIcon(new ImageIcon(img2));
+    btnICON.setBorderPainted(false);
+    btnICON.setFocusPainted(false);
+    btnICON.setContentAreaFilled(false);
     
   } catch (IOException ex) {
   }
@@ -86,6 +96,9 @@ btnGameStart = new JButton();
    btnMedium.setBounds(350,700,100,50);
    add(btnHard);
    btnHard.setBounds(450,700,100,50);
+   add(btnICON);
+   btnICON.setBounds(45,45,1100,600);
+   
    //Text Input Area
    add(name);
    name.setBounds(570,700,100,50);
@@ -94,7 +107,9 @@ btnGameStart = new JButton();
    //TextField
    add(instructions);
    instructions.setBounds(900,700,200,50);
-   
+    ImageIcon icon = new ImageIcon("images/MainMenu.png"); 
+    JLabel thumb = new JLabel();
+    thumb.setIcon(icon); 
   
   nameID.addActionListener(new ActionListener() {
    public void actionPerformed(ActionEvent e) {

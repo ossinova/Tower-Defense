@@ -8,6 +8,10 @@ package application;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.AttributedCharacterIterator;
+import java.util.Map;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -69,6 +73,7 @@ public class GameScreen extends JPanel //implements ActionListener
         add(menu);
         add(display);
         
+      
     }
     
     public void buttonSetup()
@@ -122,17 +127,25 @@ public class GameScreen extends JPanel //implements ActionListener
           display.add(levelLabel);
           levelLabel.setBounds(250,700,100,50);
           
+          
+          
         paperBTN = new JButton("Paper");
           paperBTN.addActionListener(new towerListener());
+          paperBTN.setBackground(Color.white);
         eraserBTN = new JButton("Eraser"); 
           eraserBTN.addActionListener(new towerListener());
+          eraserBTN.setBackground(Color.pink);
         pencilBTN = new JButton("Pencil");
           pencilBTN.addActionListener(new towerListener());
-         
+          pencilBTN.setForeground(Color.white);
+          pencilBTN.setBackground(Color.black);
       
         display.add(paperBTN);
         display.add(eraserBTN);
         display.add(pencilBTN);
+        
+  
+        
         
     }
     
