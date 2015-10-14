@@ -8,6 +8,8 @@ package application;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -42,6 +44,8 @@ public class GameScreen extends JPanel //implements ActionListener
     protected JButton pencilBTN;
     
     protected boolean turretSelected;
+    
+    protected int[] path;
 
     protected String userName, health, money, score, levelName;
     
@@ -54,6 +58,9 @@ public class GameScreen extends JPanel //implements ActionListener
         player = p;
         level = new Level();
         turretSelected = false;
+        
+        int[] temp = {1, 2, 14, 15, 16, 28, 40, 52, 64, 65, 66, 78, 90, 91, 92, 93, 81, 69, 70, 71, 83, 95, 107, 119, 131, 143};
+        path = temp;
         
         buttonSetup();
         userDisplaySetup();
@@ -68,6 +75,7 @@ public class GameScreen extends JPanel //implements ActionListener
         add(board);
         add(menu);
         add(display);
+
         
     }
     
@@ -145,7 +153,7 @@ public class GameScreen extends JPanel //implements ActionListener
         board.setSize(width, height);
         //board.setBackground();
         board.setLayout(null);
-
+        int counter = 1;
         for(int x = 0; x < width; x++)
         {
             for(int y = 0; y < height; y++)
@@ -154,9 +162,18 @@ public class GameScreen extends JPanel //implements ActionListener
                 {
                     JButton btn = new JButton();
                     btn.setBounds(x, y, 60, 60);
-                    btn.setBackground(new Color(34,139,34));
+                    btn.setBackground(Color.GREEN);
                     btn.addActionListener(new tileListener());
+                    for(int i = 0; i < path.length; i++)
+                    {
+                        if(counter == path[i])
+                        {
+                            btn.setBackground(Color.RED);
+                            btn.removeActionListener(new tileListner());
+                        }
+                    }
                     board.add(btn);
+                    counter++;
                  }
             }
         
@@ -196,6 +213,7 @@ public class GameScreen extends JPanel //implements ActionListener
             System.out.println("Tile was clicked");
             JButton newButton = (JButton)e.getSource();
             newButton.setBackground(Color.RED);
+            
             newButton.setIcon(turretImage);
             newButton.repaint();
             board.remove((JButton)e.getSource());
