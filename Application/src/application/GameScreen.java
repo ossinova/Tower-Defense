@@ -37,9 +37,9 @@ public class GameScreen extends JPanel //implements ActionListener
     
     Image turretImage;
     
-    JButton paperBTN = new JButton("Paper");
-    JButton eraserBTN = new JButton("Eraser"); 
-    JButton pencilBTN = new JButton("Pencil");
+    JButton paperBTN;
+    JButton eraserBTN; 
+    JButton pencilBTN;
 
     String userName, health, money, score, levelName;
     
@@ -75,12 +75,16 @@ public class GameScreen extends JPanel //implements ActionListener
         menu = new JPanel();
         
         pauseButton = new JButton("Pause");
+          pauseButton.addActionListener(new menuListener());
           menu.add(pauseButton);
         newWave = new JButton("New Wave");
+          newWave.addActionListener(new menuListener());
           menu.add(newWave);
         sellButton = new JButton("Sell Turret");
+          sellButton.addActionListener(new menuListener());
          menu.add(sellButton);
         moveButton = new JButton("Move Turret");
+         moveButton.addActionListener(new menuListener());
          menu.add(moveButton);
     }
     
@@ -116,6 +120,13 @@ public class GameScreen extends JPanel //implements ActionListener
           levelLabel.setFont(f);
           display.add(levelLabel);
           levelLabel.setBounds(250,700,100,50);
+          
+        paperBTN = new JButton("Paper");
+          paperBTN.addActionListener(new towerListener());
+        eraserBTN = new JButton("Eraser"); 
+          eraserBTN.addActionListener(new towerListener());
+        pencilBTN = new JButton("Pencil");
+          pencilBTN.addActionListener(new towerListener());
          
       
         display.add(paperBTN);
@@ -143,9 +154,8 @@ public class GameScreen extends JPanel //implements ActionListener
                     JButton btn = new JButton();
                     btn.setBounds(x, y, 60, 60);
                     btn.setBackground(new Color(34,139,34));
-                    board.add(btn);   
-                
-                     
+                    btn.addActionListener(new tileListener());
+                    board.add(btn);
                  }
             }
         
@@ -170,6 +180,75 @@ public class GameScreen extends JPanel //implements ActionListener
     public void setPlayer(Player p)
     {
         player = p;
+    }
+    
+    private class tileListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            System.out.println("Tile was clicked");
+            //Find which tile was clicked
+            //Determine if a tower can be placed
+            //Set tile icon accordingly
+        }
+    }
+    
+    private class towerListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            String str = e.getActionCommand();
+            
+            if(str.equals("Paper"))
+            {
+                System.out.println("Paper was clicked");
+                //place paper turret on tile
+            }
+            if(str.equals("Eraser"))
+            {
+                System.out.println("Eraser was clicked");
+                //place eraser turret on tile
+            }
+            if(str.equals("Pencil"))
+            {
+                System.out.println("Pencil was clicked");
+                //place eraser turret on tile
+            }
+        }
+    }
+    
+    private class menuListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            String str = e.getActionCommand();
+            
+            if(str.equals("New Wave"))
+            {
+                System.out.println("New wave was clicked");
+                //start the next wave
+            }
+            if(str.equals("Sell Turret"))
+            {
+                System.out.println("Sell turret was clicked");
+                //check if turret is selected
+                //remove icon from tile
+                //refund player
+            }
+            if(str.equals("Move Turret"))
+            {
+                System.out.println("Move turret was clicked");
+                //check if turret is selected
+                //check if tile is selectede
+                //check if tile is clear
+                //change icon of tile
+            }
+            if(str.equals("Pause"))
+            {
+                System.out.println("Pause was clicked");
+                //load pause menu
+            }
+        }
     }
 }
      
