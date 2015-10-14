@@ -20,28 +20,30 @@ public class GameScreen extends JPanel //implements ActionListener
     private Level level;
     private TurretListView turretList;
     private Turret turret;
-    JButton pauseButton;
-    JButton newWave;
-    JButton sellButton;
-    JButton moveButton;
+    protected JButton pauseButton;
+    protected JButton newWave;
+    protected JButton sellButton;
+    protected JButton moveButton;
     
-    JLabel nameLabel;
-    JLabel healthLabel;
-    JLabel moneyLabel;
-    JLabel scoreLabel;
-    JLabel levelLabel;
+    protected JLabel nameLabel;
+    protected JLabel healthLabel;
+    protected JLabel moneyLabel;
+    protected JLabel scoreLabel;
+    protected JLabel levelLabel;
     
     protected JPanel menu;
     protected JPanel display;
     protected JPanel board;
     
-    Image turretImage;
+    protected ImageIcon turretImage = new ImageIcon("notebook-paper-clipart.png");
     
-    JButton paperBTN;
-    JButton eraserBTN; 
-    JButton pencilBTN;
+    protected JButton paperBTN;
+    protected JButton eraserBTN; 
+    protected JButton pencilBTN;
+    
+    protected boolean turretSelected;
 
-    String userName, health, money, score, levelName;
+    protected String userName, health, money, score, levelName;
     
     public GameScreen(Player p) 
     {
@@ -51,6 +53,7 @@ public class GameScreen extends JPanel //implements ActionListener
         
         player = p;
         level = new Level();
+        turretSelected = false;
         
         buttonSetup();
         userDisplaySetup();
@@ -66,8 +69,6 @@ public class GameScreen extends JPanel //implements ActionListener
         add(menu);
         add(display);
         
-        
-
     }
     
     public void buttonSetup()
@@ -162,17 +163,23 @@ public class GameScreen extends JPanel //implements ActionListener
     }
     }
     
-    public void placeTurret(Turret t)
+    public void placeTurret(String turret)
     {
-        
+        if(turret.equals("Paper"))
+        {
+            turretImage = new ImageIcon("http://www.clker.com/cliparts/x/b/z/L/5/p/lined-paper-hi.png");
+        }
+        if(turret.equals("Eraser"))
+        {
+            turretImage = new ImageIcon("http://images.clipartpanda.com/eraser-clipart-black-and-white-13471970421371056508erasers-hi.png");
+        }
+        if(turret.equals("Pencil"))
+        {
+            turretImage = new ImageIcon("http://www.clker.com/cliparts/y/H/3/0/1/G/pencil-hi.png");
+        }
     }
     
     public void loadLevel()
-    {
-        
-    }
-    
-    public void diplaySetup()
     {
         
     }
@@ -189,6 +196,8 @@ public class GameScreen extends JPanel //implements ActionListener
             System.out.println("Tile was clicked");
             JButton newButton = (JButton)e.getSource();
             newButton.setBackground(Color.RED);
+            newButton.setIcon(turretImage);
+            newButton.repaint();
             board.remove((JButton)e.getSource());
             board.add(newButton);
             //Find which tile was clicked
@@ -205,18 +214,21 @@ public class GameScreen extends JPanel //implements ActionListener
             
             if(str.equals("Paper"))
             {
+                turretSelected = true;
                 System.out.println("Paper was clicked");
-                //place paper turret on tile
+                placeTurret(str);
             }
             if(str.equals("Eraser"))
             {
+                turretSelected = true;
                 System.out.println("Eraser was clicked");
-                //place eraser turret on tile
+                placeTurret(str);
             }
             if(str.equals("Pencil"))
             {
+                turretSelected = true;
                 System.out.println("Pencil was clicked");
-                //place eraser turret on tile
+                placeTurret(str);
             }
         }
     }
