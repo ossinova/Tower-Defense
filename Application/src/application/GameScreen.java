@@ -6,6 +6,7 @@
 package application;
 
 import java.awt.*;
+import static java.awt.Color.white;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -48,6 +49,12 @@ public class GameScreen extends JPanel //implements ActionListener
     protected JButton pencilBTN;
     
     protected boolean turretSelected;
+    protected boolean paperSelected  = false;
+    protected boolean eraserSelected = false;
+    protected boolean pencilSelected = false;
+    
+    Color c; 
+    
     
     protected int[] path;
 
@@ -197,15 +204,17 @@ public class GameScreen extends JPanel //implements ActionListener
     {
         if(turret.equals("Paper"))
         {
-            turretImage = new ImageIcon("http://www.clker.com/cliparts/x/b/z/L/5/p/lined-paper-hi.png");
+            
+            c = Color.WHITE;
         }
         if(turret.equals("Eraser"))
         {
-            turretImage = new ImageIcon("http://images.clipartpanda.com/eraser-clipart-black-and-white-13471970421371056508erasers-hi.png");
+            
+            c = Color.PINK;
         }
         if(turret.equals("Pencil"))
         {
-            turretImage = new ImageIcon("http://www.clker.com/cliparts/y/H/3/0/1/G/pencil-hi.png");
+            c = Color.BLACK;
         }
     }
     
@@ -225,7 +234,7 @@ public class GameScreen extends JPanel //implements ActionListener
         {
             System.out.println("Tile was clicked");
             JButton newButton = (JButton)e.getSource();
-            newButton.setBackground(Color.RED);
+            newButton.setBackground(c);
             
             newButton.setIcon(turretImage);
             newButton.repaint();
