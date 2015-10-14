@@ -5,6 +5,8 @@
  */
 package application;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author asl5257
@@ -16,6 +18,7 @@ public class Application
     public static void main(String[] args)
     {
         Application game = new Application();
+        
     }
     
     public Application()
