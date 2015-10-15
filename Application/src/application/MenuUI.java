@@ -8,6 +8,7 @@ package application;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -52,7 +53,7 @@ public class MenuUI extends JPanel implements ActionListener{
     //Text Fields
    JLabel name = new JLabel("Enter username: "); 
    JLabel instructions = new JLabel("<html>1. Enter yur user name <br> 2.Select difficulity/Level <br> 3.click Start Game</html>");
-    
+    JLabel logo = new JLabel("Class Room Defense");
    boolean userNameEntered = false;
     //TextFile for high score
      File f = null;
@@ -62,7 +63,7 @@ public class MenuUI extends JPanel implements ActionListener{
      
      public MenuUI() {
   
-    
+    Font j = new Font("Impact", Font.BOLD, 70);
 
     
     setLayout(null);
@@ -79,7 +80,7 @@ public class MenuUI extends JPanel implements ActionListener{
   } catch (IOException ex) {
   }
   try {
-    Image img2 = ImageIO.read(getClass().getResource("images/MainMenu.png"));
+    Image img2 = ImageIO.read(getClass().getResource("images/logo.png"));
     btnICON.setIcon(new ImageIcon(img2));
     btnICON.setBorderPainted(false);
     btnICON.setFocusPainted(false);
@@ -107,10 +108,10 @@ public class MenuUI extends JPanel implements ActionListener{
    //TextField
    add(instructions);
    instructions.setBounds(900,700,200,50);
-    ImageIcon icon = new ImageIcon("images/MainMenu.png"); 
-    JLabel thumb = new JLabel();
-    thumb.setIcon(icon); 
-  
+   add(logo);
+   logo.setFont(j);
+   logo.setBounds(250, 50, 1250, 150);
+   logo.setForeground(Color.RED);
   nameID.addActionListener(new ActionListener() {
    public void actionPerformed(ActionEvent e) {
          
