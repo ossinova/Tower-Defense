@@ -329,7 +329,18 @@ public class GameScreen extends JPanel //implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
         {
+            int enemyIndex = 0;
+            int pathIndex = 0;
             
+            for(int i = 0; i > enemyIndex; i--)
+            {
+                for(int j = 0; j > pathIndex; j--)
+                {
+                    enemies.get(i).setPathLocation(j);
+                }
+            }
+            enemyIndex++;
+            pathIndex++;
         }
     }
 }
