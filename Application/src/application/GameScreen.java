@@ -10,6 +10,7 @@ import static java.awt.Color.white;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import java.text.AttributedCharacterIterator;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class GameScreen extends JPanel //implements ActionListener
 {
     private Player player;
     private Level level;
+    private int playerLevel;
     private TurretListView turretList;
     private Turret turret;
     protected JButton pauseButton;
@@ -53,7 +55,9 @@ public class GameScreen extends JPanel //implements ActionListener
     protected boolean eraserSelected = false;
     protected boolean pencilSelected = false;
     
-    Color c; 
+    Color c;
+    
+    protected ArrayList<Enemy> enemies;
     
     
     protected int[] path;
@@ -171,7 +175,6 @@ public class GameScreen extends JPanel //implements ActionListener
         int height = 720;
         board = new JPanel();
         board.setSize(width, height);
-        //board.setBackground();
         board.setLayout(null);
         int counter = 1;
         for(int x = 0; x < width; x++)
@@ -184,6 +187,7 @@ public class GameScreen extends JPanel //implements ActionListener
                     btn.setBounds(x, y, 60, 60);
                     btn.setBackground(Color.GREEN);
                     btn.addActionListener(new tileListener());
+                    
                     for(int i = 0; i < path.length; i++)
                     {
                         if(counter == path[i])
@@ -202,25 +206,34 @@ public class GameScreen extends JPanel //implements ActionListener
     
     public void placeTurret(String turret)
     {
-        if(turret.equals("Paper"))
+        if(turretSelected)
         {
-            
-            c = Color.WHITE;
-        }
-        if(turret.equals("Eraser"))
-        {
-            
-            c = Color.PINK;
-        }
-        if(turret.equals("Pencil"))
-        {
-            c = Color.BLACK;
+            if(turret.equals("Paper"))
+            { 
+                c = Color.WHITE;
+            }
+            if(turret.equals("Eraser"))
+            {  
+                c = Color.PINK;
+            }
+            if(turret.equals("Pencil"))
+            {
+               c = Color.BLACK;
+            }
         }
     }
     
     public void loadLevel()
     {
         
+    }
+    
+    public void waveSetup()
+    {
+        for(int i = 0; i < 10 + playerLevel; i++)
+        {
+            enemies.add(new Enemy(playerLevel));
+        }
     }
     
     public void setPlayer(Player p)
@@ -240,6 +253,7 @@ public class GameScreen extends JPanel //implements ActionListener
             newButton.repaint();
             board.remove((JButton)e.getSource());
             board.add(newButton);
+            turretSelected = false;
             //Find which tile was clicked
             //Determine if a tower can be placed
             //Set tile icon accordingly
