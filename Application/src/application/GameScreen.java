@@ -64,7 +64,7 @@ public class GameScreen extends JPanel //implements ActionListener
 
     protected String userName, health, money, score, levelName;
     
-    //Timer t = new Timer(1000, new timerListener());
+    Timer t = new Timer(1000, new timerListener());
     
     public GameScreen(Player p) 
     {
@@ -325,21 +325,13 @@ public class GameScreen extends JPanel //implements ActionListener
         }
     }
     
-    /*private class timerListener implements ActionListener
+    private class timerListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
         {
-            int indexCounter = 0;
-            int pathCounter = 0;
-            for(int i = 0; i < enemies.size(); i++) 
-            {
-                while(indexCounter > 0)
-                {
-                    enem
-                }
-            }
+            
         }
-    }*/
+    }
 }
      
 

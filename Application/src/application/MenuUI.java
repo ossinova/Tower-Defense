@@ -79,15 +79,15 @@ public class MenuUI extends JPanel implements ActionListener{
     
   } catch (IOException ex) {
   }
-  try {
-    Image img2 = ImageIO.read(getClass().getResource("images/logo.png"));
+ /* try {
+    Image img2 = ImageIO.read(getClass().getResource("play.png"));
     btnICON.setIcon(new ImageIcon(img2));
     btnICON.setBorderPainted(false);
     btnICON.setFocusPainted(false);
     btnICON.setContentAreaFilled(false);
     
   } catch (IOException ex) {
-  }
+  }*/
 
    add(btnGameStart);
    btnGameStart.setBounds(50,650,100,100);
