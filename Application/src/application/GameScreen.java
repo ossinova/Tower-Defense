@@ -64,7 +64,7 @@ public class GameScreen extends JPanel //implements ActionListener
 
     protected String userName, health, money, score, levelName;
     
-    Timer t = new Timer(1000, new timerListener());
+    //Timer t = new Timer(1000, new timerListener());
     
     public GameScreen(Player p) 
     {
