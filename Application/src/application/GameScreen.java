@@ -44,7 +44,7 @@ public class GameScreen extends JPanel //implements ActionListener
     protected JPanel display;
     protected JPanel board;
     
-    protected ImageIcon turretImage = new ImageIcon("notebook-paper-clipart.png");
+    protected ImageIcon turretImage;
     
     protected JButton paperBTN;
     protected JButton eraserBTN; 
@@ -64,6 +64,8 @@ public class GameScreen extends JPanel //implements ActionListener
 
     protected String userName, health, money, score, levelName;
     
+    //Timer t = new Timer(1000, new timerListener());
+    
     public GameScreen(Player p) 
     {
         super();
@@ -73,6 +75,7 @@ public class GameScreen extends JPanel //implements ActionListener
         player = p;
         level = new Level();
         turretSelected = false;
+        enemies = new ArrayList<Enemy>();
         
         int[] temp = {1, 2, 14, 15, 16, 28, 40, 52, 64, 65, 66, 78, 90, 91, 92, 93, 81, 69, 70, 71, 83, 95, 107, 119, 131, 143};
         path = temp;
@@ -186,14 +189,15 @@ public class GameScreen extends JPanel //implements ActionListener
                     JButton btn = new JButton();
                     btn.setBounds(x, y, 60, 60);
                     btn.setBackground(Color.GREEN);
-                    btn.addActionListener(new tileListener());
+                    tileListener tl = new tileListener();
+                    btn.addActionListener(tl);
                     
                     for(int i = 0; i < path.length; i++)
                     {
                         if(counter == path[i])
                         {
                             btn.setBackground(Color.RED);
-                            btn.removeActionListener(new tileListener());
+                            btn.removeActionListener(tl);
                         }
                     }
                     board.add(btn);
@@ -296,7 +300,7 @@ public class GameScreen extends JPanel //implements ActionListener
             if(str.equals("New Wave"))
             {
                 System.out.println("New wave was clicked");
-                //start the next wave
+                waveSetup();
             }
             if(str.equals("Sell Turret"))
             {
@@ -320,6 +324,22 @@ public class GameScreen extends JPanel //implements ActionListener
             }
         }
     }
+    
+    /*private class timerListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            int indexCounter = 0;
+            int pathCounter = 0;
+            for(int i = 0; i < enemies.size(); i++) 
+            {
+                while(indexCounter > 0)
+                {
+                    enem
+                }
+            }
+        }
+    }*/
 }
      
 
