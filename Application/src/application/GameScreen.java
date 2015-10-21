@@ -29,6 +29,9 @@ public class GameScreen extends JPanel //implements ActionListener
     private int playerLevel;
     private TurretListView turretList;
     private Turret turret;
+    
+    protected ArrayList<JButton> tiles;
+    protected ArrayList<Turret> turrets;
     protected JButton pauseButton;
     protected JButton newWave;
     protected JButton sellButton;
@@ -58,11 +61,11 @@ public class GameScreen extends JPanel //implements ActionListener
     Color c;
     
     protected ArrayList<Enemy> enemies;
-    
-    
     protected int[] path;
-
     protected String userName, health, money, score, levelName;
+    
+    protected int enemyIndex = 0;
+    protected int pathIndex = 0;
     
     Timer t = new Timer(1000, new timerListener());
     
@@ -174,6 +177,7 @@ public class GameScreen extends JPanel //implements ActionListener
     
     public void boardSetup()
     {
+        tiles = new ArrayList<JButton>();
         int width = 720;
         int height = 720;
         board = new JPanel();
@@ -186,7 +190,7 @@ public class GameScreen extends JPanel //implements ActionListener
             {
                 if(x % 60 == 0 && y % 60 ==0)
                 {
-                    JButton btn = new JButton();
+                    JButton btn = new JButton(Integer.toString(counter));
                     btn.setBounds(x, y, 60, 60);
                     btn.setBackground(Color.GREEN);
                     tileListener tl = new tileListener();
@@ -201,6 +205,7 @@ public class GameScreen extends JPanel //implements ActionListener
                         }
                     }
                     board.add(btn);
+                    tiles.add(btn);
                     counter++;
                  }
             }
@@ -301,6 +306,7 @@ public class GameScreen extends JPanel //implements ActionListener
             {
                 System.out.println("New wave was clicked");
                 waveSetup();
+                t.start();
             }
             if(str.equals("Sell Turret"))
             {
@@ -320,6 +326,7 @@ public class GameScreen extends JPanel //implements ActionListener
             if(str.equals("Pause"))
             {
                 System.out.println("Pause was clicked");
+                t.stop();
                 //load pause menu
             }
         }
@@ -328,17 +335,35 @@ public class GameScreen extends JPanel //implements ActionListener
     private class timerListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
-        {
-            int enemyIndex = 0;
-            int pathIndex = 0;
+        { 
+            System.out.print("EnemyIndex: "+enemyIndex+", Path Index: "+pathIndex);
             
-            for(int i = 0; i > enemyIndex; i--)
+            for(int i = enemies.size(); i >= 0; i--)
             {
-                for(int j = 0; j > pathIndex; j--)
+                for(int j = path.length; j >= 0; j--)
                 {
-                    enemies.get(i).setPathLocation(j);
+                    enemies.get(i - 1).setPathLocation(j - 1);
+                    System.out.println("Enemy "+i+" move to tile "+j);
                 }
             }
+            
+            for(int i = 0; i < tiles.size(); i++)
+            {
+                for(int j = 0; j < enemies.size(); j++)
+                {
+                    int tileIndex = Integer.parseInt(tiles.get(i).getText());
+                    
+                    if(enemies.get(j).getPathLocation() == tileIndex)
+                    {
+                        tiles.get(i).setBackground(Color.BLUE);
+                        board.updateUI();
+                    }
+                }
+            }
+            
+            //check range of turrets
+            //fire turrets if possible
+            
             enemyIndex++;
             pathIndex++;
         }
